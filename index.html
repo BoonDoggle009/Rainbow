@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Rainbow (epillepsy warning)</title>
+        <style>
+            @keyframes del {
+                from {
+                    
+                }
+                to {
+                    width: 0px;
+                    height: 0px;
+                    top:50%;
+                    left:50%;
+                    right:50%;
+                    bottom:50%;
+                }
+            }
+            
+            .new {
+                animation-name:del;
+                animation-duration:1s;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var create = function() {
+                var newDiv = document.createElement('div');
+                document.body.appendChild(newDiv);
+                newDiv.style.position = "absolute"
+                newDiv.style.width = Math.floor(Math.random() * 255) + "px"
+                newDiv.style.height = Math.floor(Math.random() * 255) + "px"
+                var colorN = Math.floor(Math.random() * 7)
+                
+                if (colorN == 7) {
+                    colorN = 6
+                }
+                
+                var color = "nil"
+                
+                if (colorN == 0) {
+                    color = "red"
+                }
+                if (colorN == 1) {
+                    color = "blue"
+                }
+                if (colorN == 2) {
+                    color = "green"
+                }
+                if (colorN == 3) {
+                    color = "yellow"
+                }
+                if (colorN == 4) {
+                    color = "indigo"
+                }
+                if (colorN == 5) {
+                    color = "cyan"
+                }
+                if (colorN == 6) {
+                    color = "lime"
+                }
+                
+                newDiv.style.background = color
+                
+                var posL = Math.floor(Math.random() * 101)
+                var posT = Math.floor(Math.random() * 101)
+                
+                newDiv.style.left = posL + "%"
+                newDiv.style.top = posT + "%"
+                newDiv.className = "new"
+                
+                var remove = function() {
+                    newDiv.remove()
+                }
+                
+                window.setInterval(remove, 1000)
+                
+                window.requestAnimationFrame(create)
+            }
+            create();
+        </script>
+    </body>
+</html>
